@@ -14,7 +14,7 @@ namespace KeroseneORMPresetation.Models
             Kerosene.ORM.Direct.DataEngine.InitializeEngines();
 
             var link = Kerosene.ORM.Direct.DataLink.Create("SqlClient",
-                "Server=JERSON-PC\\DBSERVER;Database=KeroseneDB;Integrated Security=true");
+                "Server=ESTEBAN-PC\\SQLSERVER;Database=KeroseneDB;Integrated Security=true");
 
             link.Open();
             return link.DbConnection;

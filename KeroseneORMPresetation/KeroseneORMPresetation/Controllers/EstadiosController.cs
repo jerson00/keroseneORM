@@ -7,10 +7,12 @@ using System.Web.Mvc;
 
 namespace KeroseneORMPresetation.Controllers
 {
-    public class EquiposController : Controller
+    public class EstadiosController : Controller
     {
         // GET: Equipos
-       
+        int Id;
+        string Nombre;
+        string Localidad;
         public ActionResult Index()
         {
             var connection = MvcApplication.KeroseneConnection;
@@ -23,24 +25,24 @@ namespace KeroseneORMPresetation.Controllers
             return View();
         }
 
-        // GET: Equipos/Create
+        // GET: Estadio/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Equipos/Create
+        // POST: Estadio/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
             try
             {
                 // TODO: Add insert logic here
-                Equipo e = new Equipo();
-                e.Nombre = collection.["Nombre"];
-                e.Uniforme = collection["Uniforme"];
-                db.Equipo.Add(e);
-                db.SaveChanges();
+                Estadio es = new Estadio();
+                es.Nombre = collection["Nombre"];
+                es.Localidad = collection["Localidad"];
+                // db.Equipo.Add(e);
+                // db.SaveChanges();
 
                 return RedirectToAction("Index");
             }
@@ -63,12 +65,6 @@ namespace KeroseneORMPresetation.Controllers
             try
             {
                 // TODO: Add update logic here
-               
-
-                // Update equipo with form posted values
-                equipo.Nombre = Request.Form["Nombre"];
-                equipo.Uniforme = Request.Form["Uniforme"];
-                db.Save();
 
                 return RedirectToAction("Index");
             }
@@ -91,13 +87,6 @@ namespace KeroseneORMPresetation.Controllers
             try
             {
                 // TODO: Add delete logic here
-                Equipo equipo = dinnerRepository.GetDinner(id);
-
-                if (equipo == null)
-                    return View("NotFound");
-
-                dinnerRepository.Delete(equipo);
-                dinnerRepository.Save();
 
                 return RedirectToAction("Index");
             }
