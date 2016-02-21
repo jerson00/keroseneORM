@@ -1,6 +1,8 @@
-﻿using KeroseneORMPresetation.Models;
+﻿using Kerosene.ORM.Core;
+using KeroseneORMPresetation.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -9,13 +11,16 @@ namespace KeroseneORMPresetation.Controllers
 {
     public class EstadiosController : Controller
     {
+        private IDataLink kConnection;
         // GET: Equipos
-        int Id;
-        string Nombre;
-        string Localidad;
+        public EstadiosController()
+        {
+            KeroseneConection kc = new KeroseneConection();
+            kConnection = kc.Conection();
+        }
         public ActionResult Index()
         {
-            var connection = MvcApplication.KeroseneConnection;
+            ViewBag.estadios = Estadio.getEstadios(kConnection);
             return View();
         }
 

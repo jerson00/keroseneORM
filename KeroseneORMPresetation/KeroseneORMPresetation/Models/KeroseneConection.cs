@@ -9,16 +9,12 @@ namespace KeroseneORMPresetation.Models
 {
     public class KeroseneConection
     {
-        public static IDbConnection Conection()
+        public IDataLink Conection()
         {
             Kerosene.ORM.Direct.DataEngine.InitializeEngines();
-
-            var link = Kerosene.ORM.Direct.DataLink.Create("SqlClient",
-                "Server=ESTEBAN-PC\\SQLSERVER;Database=KeroseneDB;Integrated Security=true");
-
-            link.Open();
-            return link.DbConnection;
-
+            var connection = Kerosene.ORM.Direct.DataLink.Create("SqlClient", "Server=JERSON-PC\\SQLEXPRESS;Database=KeroseneDB;Integrated Security=true");
+            connection.Open();
+            return connection;
         }
     }
 }
