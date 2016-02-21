@@ -3,5 +3,28 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
 
+<h2>Equipos</h2>
+
+<table class="table table-bordered table-striped table-condensed table-hover">
+    <thead>
+        <tr>
+            <th>Equipo</th>
+            <th>Uniforme</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            var listEquipos = ViewBag.equipos;
+            foreach (var equipo in listEquipos)
+            {
+                <tr>
+                    <td> @equipo.nombre </td>
+                    <td> @equipo.uniforme </td>
+                </tr>
+            }
+        }
+
+
+    </tbody>
+</table>

@@ -1,4 +1,5 @@
-﻿using KeroseneORMPresetation.Models;
+﻿using Kerosene.ORM.Core;
+using KeroseneORMPresetation.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,18 @@ namespace KeroseneORMPresetation.Controllers
 {
     public class EquiposController : Controller
     {
+        private IDataLink kConnection;
+        public EquiposController()
+        {
+            KeroseneConection kc = new KeroseneConection();
+            kConnection = kc.Conection();
+        }
+
         // GET: Equipos
-       
+
         public ActionResult Index()
         {
+            ViewBag.equipos = Equipo.getEquipos(kConnection);
             return View();
         }
 

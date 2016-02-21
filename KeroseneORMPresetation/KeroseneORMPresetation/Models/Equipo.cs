@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Kerosene.ORM.Core;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -8,8 +9,11 @@ namespace KeroseneORMPresetation.Models
 {
     public class Equipo
     {
-        public int Id { get; set; }
-        public string Nombre { get; set; }
-        public string Uniforme { get; set; }
+        public static object getEquipos(IDataLink kConnection)
+        {
+            var equipos = kConnection.Raw("Select * from equipos").ToList();
+            kConnection.Close();
+            return equipos;
+        }
     }
-}
+}   

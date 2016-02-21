@@ -42,12 +42,12 @@ namespace KeroseneORMPresetation.Controllers
         {
             try
             {
-                // TODO: Add insert logic here
+               /* // TODO: Add insert logic here
                 Estadio es = new Estadio();
                 es.Nombre = collection["Nombre"];
                 es.Localidad = collection["Localidad"];
                 // db.Equipo.Add(e);
-                // db.SaveChanges();
+                // db.SaveChanges();*/
 
                 return RedirectToAction("Index");
             }

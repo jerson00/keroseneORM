@@ -3,5 +3,26 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<div class="row">
+    <h2>Partidos</h2>
 
+    @{
+        var listaPartidos = ViewBag.partidos;
+        foreach (var partidos in listaPartidos)
+        {
+            <div class="col-md-4">
+                <div class="jumbotron">
+                    <div class="row">
+                        <form action="/partidos/edit" method="post">
+                            <input hidden name="id" value="@partidos.id" />
+                            <h5><strong>@partidos.estadio</strong></h5>
+                            <h4>@partidos.equipo1 @partidos.marcador1</h4>
+                            <h4>@partidos.equipo2 @partidos.marcador2</h4>
+                            <button class="btn btn-primary">Resultado</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</div>

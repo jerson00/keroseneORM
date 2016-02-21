@@ -163,6 +163,7 @@
     <Content Include="Views\Estadios\Create.cshtml" />
     <Content Include="Views\Partidos\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Estadios\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
