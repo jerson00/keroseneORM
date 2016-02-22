@@ -11,6 +11,7 @@ namespace KeroseneORMPresetation.Models
     {
         public static object getEquipos(IDataLink kConnection)
         {
+            kConnection.Open();
             var equipos = kConnection.Raw("Select * from equipos").ToList();
             kConnection.Close();
             return equipos;

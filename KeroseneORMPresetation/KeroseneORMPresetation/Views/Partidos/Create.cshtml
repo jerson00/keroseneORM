@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewBag.Title = "create";
+}
+
+
+<br />
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        @{
+            if (ViewBag.message != null)
+            {
+                <h3></h3>
+                <div class="alert alert-danger">
+                    <strong>Error: </strong> @ViewBag.message
+                </div>
+            }
+        }
+        <div class="panel panel-default">
+            <div class="panel-heading">Registrar un nuevo partido</div>
+            <div class="panel-body">
+                <div class="col-md-10 col-md-offset-2">
+                    <form class="form-horizontal" action="/partidos/create" method="post">
+                        <div class="form-group">
+                            <p>Seleccione el equipo local</p>
+                            <select class="form-control" name="equipo1">
+                                @{
+                                    foreach (var dataEquipo in ViewBag.equipos)
+                                    {
+                                        <option value="@dataEquipo.id">@dataEquipo.nombre</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <p>Seleccione el equipo visitante</p>
+                            <select class="form-control" name="equipo2">
+                                @{
+                                    foreach (var dataEquipo in ViewBag.equipos)
+                                    {
+                                        <option value="@dataEquipo.id">@dataEquipo.nombre</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <p>Seleccione el estadio</p>
+                            <select class="form-control" name="estadio">
+                                @{
+                                    foreach (var dataEstadio in ViewBag.estadios)
+                                    {
+                                        <option value="@dataEstadio.id">@dataEstadio.nombre</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-primary" value="Guardar">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+

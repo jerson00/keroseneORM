@@ -2,9 +2,15 @@
 @{
     ViewBag.Title = "Index";
 }
+<br/>
+<div class="row">
+    <div class="col-md-10">
+        <a class="btn btn-primary" href="/partidos/create">Registar Partido</a>
+    </div>
+</div>
+<br/>
 
 <div class="row">
-    <h2>Partidos</h2>
 
     @{
         var listaPartidos = ViewBag.partidos;

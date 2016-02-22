@@ -1,45 +1,32 @@
 ﻿@model KeroseneORMPresetation.Models.Estadio
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Registrar estadio";
 }
 
-<h2>Create</h2>
-
-
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-
-    <div class="form-horizontal">
-        <h4>Estadio</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+<br />
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="panel panel-default">
+            <div class="panel-heading">Registrar un nuevo estadio</div>
+            <div class="panel-body">
+                <div class="col-md-10 col-md-offset-2">
+                    <form class="form-horizontal" action="/estadios/create" method="post">
+                        <div class="form-group">
+                            <p>Nombre del estadio</p>
+                            <input class="form-control" type="text" name="nombre" placeholder="Nombre" />
+                        </div>
+                        <div class="form-group">
+                            <p>Localidad</p>
+                            <input class="form-control" type="text" name="localidad" placeholder="Localidad" />
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-primary" value="Guardar">
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Localidad, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Localidad, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Localidad, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
     </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
 </div>
-

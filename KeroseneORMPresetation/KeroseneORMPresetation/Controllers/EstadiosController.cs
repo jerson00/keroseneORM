@@ -38,44 +38,57 @@ namespace KeroseneORMPresetation.Controllers
 
         // POST: Estadio/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(FormCollection formEstadio)
         {
             try
             {
-               /* // TODO: Add insert logic here
-                Estadio es = new Estadio();
-                es.Nombre = collection["Nombre"];
-                es.Localidad = collection["Localidad"];
-                // db.Equipo.Add(e);
-                // db.SaveChanges();*/
-
+                var objEstadio = new Estadio
+                {
+                    Nombre = formEstadio["nombre"],
+                    Localidad = formEstadio["localidad"]
+                };
+                Estadio.insertEstadio(objEstadio, kConnection);
                 return RedirectToAction("Index");
             }
-            catch
+            catch (Exception e)
             {
-                return View();
+                return RedirectToAction("Index");
             }
         }
 
-        // GET: Equipos/Edit/5
+        // GET: Estadios/Edit/5
         public ActionResult Edit(int id)
         {
+            var objEstadio = new Estadio
+            {
+                Id = id
+            };
+
+            ViewBag.estadios = Estadio.getEstadioById(objEstadio, kConnection);
+            ViewBag.id = id;
             return View();
         }
 
-        // POST: Equipos/Edit/5
+        // POST: Estadios/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
             try
             {
                 // TODO: Add update logic here
+                var objEstadio = new Estadio
+                {
+                    Id = id,
+                    Nombre = collection["nombre"],
+                    Localidad = collection["localidad"]
+                };
 
+                Estadio.updateEstadio(objEstadio, kConnection);
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                return RedirectToAction("Index");
             }
         }
 
@@ -85,19 +98,24 @@ namespace KeroseneORMPresetation.Controllers
             return View();
         }
 
-        // POST: Equipos/Delete/5
+        // POST: Estadios/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
             try
             {
                 // TODO: Add delete logic here
+                var objEstadio = new Estadio
+                {
+                    Id = id
+                };
 
+                Estadio.deleteEstadio(objEstadio, kConnection);
                 return RedirectToAction("Index");
             }
-            catch
+            catch (Exception e)
             {
-                return View();
+                return RedirectToAction("Index");
             }
         }
     }

@@ -5,11 +5,21 @@
 
 <h2>Estadios</h2>
 
+<br />
+<div class="row">
+    <div class="col-md-10">
+        <a class="btn btn-primary" href="/estadios/create">Registrar Estadio</a>
+    </div>
+</div>
+<br />
+
 <table class="table table-bordered table-striped table-condensed table-hover">
     <thead>
         <tr>
             <th>Estadio</th>
             <th>Localidad</th>
+            <th>Eliminar</th>
+            <th>Editar</th>
         </tr>
     </thead>
     <tbody>
@@ -20,6 +30,15 @@
                 <tr>
                     <td> @estadio.nombre </td>
                     <td> @estadio.localidad </td>
+                    <td>
+                        <form action="/estadios/delete" method="post">
+                            <input type="hidden" name="id" value="@estadio.id" />
+                            <button class="btn btn-danger" type="submit">X</button>
+                        </form>
+                    </td>
+                    <td>
+                        <a class="btn btn-success" href="/estadios/edit/@estadio.id">E</a>
+                    </td>
                 </tr>
             }
         }
