@@ -6,11 +6,21 @@
 
 <h2>Equipos</h2>
 
+<br />
+<div class="row">
+    <div class="col-md-10">
+        <a class="btn btn-primary" href="/EQUIPOS/create">Registrar Equipo</a>
+    </div>
+</div>
+<br />
+
 <table class="table table-bordered table-striped table-condensed table-hover">
     <thead>
         <tr>
             <th>Equipo</th>
             <th>Uniforme</th>
+            <th>Eliminar</th>
+            <th>Editar</th>
         </tr>
     </thead>
     <tbody>
@@ -21,6 +31,15 @@
                 <tr>
                     <td> @equipo.nombre </td>
                     <td> @equipo.uniforme </td>
+                    <td>
+                        <form action="/equipos/delete" method="post">
+                            <input type="hidden" name="id" value="@equipo.id" />
+                            <button class="btn btn-danger" type="submit">X</button>
+                        </form>
+                    </td>
+                    <td>
+                        <a class="btn btn-success" href="/equipos/edit/@equipo.id">E</a>
+                    </td>
                 </tr>
             }
         }
