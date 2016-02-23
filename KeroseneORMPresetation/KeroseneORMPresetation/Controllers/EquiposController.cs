@@ -39,28 +39,35 @@ namespace KeroseneORMPresetation.Controllers
 
         // POST: Equipos/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(FormCollection formEquipo)
         {
             try
             {
-                // TODO: Add insert logic here
-                /*Equipo e = new Equipo();
-                e.Nombre = collection.["Nombre"];
-                e.Uniforme = collection["Uniforme"];
-                db.Equipo.Add(e);
-                db.SaveChanges();*/
-
+                var objEquipo = new Equipo
+                {
+                    Nombre = formEquipo["nombre"],
+                    Uniforme = formEquipo["uniforme"]
+                };
+                Equipo.insertEquipo(objEquipo, kConnection);
                 return RedirectToAction("Index");
+
             }
-            catch
+            catch (Exception e)
             {
-                return View();
+                return RedirectToAction("Index");
             }
         }
 
         // GET: Equipos/Edit/5
         public ActionResult Edit(int id)
         {
+            var objEquipo = new Equipo
+            {
+                Id = id
+            };
+
+            ViewBag.equipos = Equipo.getEquipoById(objEquipo, kConnection);
+            ViewBag.id = id;
             return View();
         }
 
@@ -70,20 +77,20 @@ namespace KeroseneORMPresetation.Controllers
         {
             try
             {
-                // TODO: Add update logic here
-               
 
-                // Update equipo with form posted values
-                /*
-                equipo.Nombre = Request.Form["Nombre"];
-                equipo.Uniforme = Request.Form["Uniforme"];
-                db.Save();
-                */
+                var objEquipo = new Equipo
+                {
+                    Id = id,
+                    Nombre = collection["nombre"],
+                    Uniforme = collection["uniforme"]
+                };
+
+                Equipo.updateEquipo(objEquipo, kConnection);
                 return RedirectToAction("Index");
             }
-            catch
+            catch (Exception e)
             {
-                return View();
+                return RedirectToAction("Index");
             }
         }
 
@@ -99,21 +106,18 @@ namespace KeroseneORMPresetation.Controllers
         {
             try
             {
-                /*
-                // TODO: Add delete logic here
-                Equipo equipo = dinnerRepository.GetDinner(id);
 
-                if (equipo == null)
-                    return View("NotFound");
+                var objEquipo = new Equipo
+                {
+                    Id = id
+                };
 
-                dinnerRepository.Delete(equipo);
-                dinnerRepository.Save();
-                */
+                Equipo.deleteEquipo(objEquipo, kConnection);
                 return RedirectToAction("Index");
             }
-            catch
+            catch (Exception e)
             {
-                return View();
+                return RedirectToAction("Index");
             }
         }
     }

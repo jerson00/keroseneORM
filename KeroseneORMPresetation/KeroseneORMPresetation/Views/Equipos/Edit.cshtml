@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Edit";
 }
 
@@ -7,21 +6,21 @@
 <div class="row">
     <div class="col-md-6 col-md-offset-3">
         <div class="panel panel-default">
-            <div class="panel-heading">Editar estadio</div>
+            <div class="panel-heading">Editar equipo</div>
             <div class="panel-body">
                 <div class="col-md-10 col-md-offset-2">
-                    <form class="form-horizontal" action="/estadios/edit/@ViewBag.id" method="post">
+                    <form class="form-horizontal" action="/equipos/edit/@ViewBag.id" method="post">
                         @{
-                            foreach (var dataEstadio in ViewBag.estadios)
+                            foreach (var dataEquipo in ViewBag.equipos)
                             {
-                                <input type="hidden" name="name" value="@dataEstadio.id" />
+                                <input type="hidden" name="name" value="@dataEquipo.id" />
                                 <div class="form-group">
-                                    <p>Nombre del estadio</p>
-                                    <input class="form-control" type="text" name="nombre" placeholder="Nombre" value="@dataEstadio.nombre" />
+                                    <p>Nombre del equipo</p>
+                                    <input class="form-control" type="text" name="nombre" placeholder="Nombre" value="@dataEquipo.nombre" />
                                 </div>
                                 <div class="form-group">
-                                    <p>Localidad</p>
-                                    <input class="form-control" type="text" name="localidad" placeholder="Localidad" value="@dataEstadio.localidad" />
+                                    <p>Uniforme</p>
+                                    <input class="form-control" type="text" name="Uniforme" placeholder="Uniforme" value="@dataEquipo.Uniforme" />
                                 </div>
                                 <div class="form-group">
                                     <input type="submit" class="btn btn-primary" value="Actualizar">
