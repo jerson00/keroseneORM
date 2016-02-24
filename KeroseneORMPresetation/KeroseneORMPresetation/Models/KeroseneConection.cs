@@ -11,7 +11,7 @@ namespace KeroseneORMPresetation.Models
     {
         public IDataLink Conection()
         {
-            var connection = Kerosene.ORM.Direct.DataLink.Create("SqlClient", "Server=ESTEBAN-PC\\SQLSERVER;Database=KeroseneDB;Integrated Security=true");
+            var connection = Kerosene.ORM.Direct.DataLink.Create("SqlClient", "Server=JERSON-PC\\SQLEXPRESS;Database=KeroseneDB;Integrated Security=true");
             return connection;
         }
     }
